@@ -24,11 +24,11 @@
 		<details>
   			<summary>Content</summary>
 
-		+ FINDINGS
-		+ MISSING DATA
-		+ DUPLICATES AND IRRELEVANT DATA
-		+ OUTLIERS
-		+ STRATEGY FOR CLEANING
+		+ [FINDINGS](cleaning_data#findings)
+		+ [MISSING DATA](cleaning_data#missing-data-total-rows--15134)
+		+ [DUPLICATES AND IRRELEVANT DATA](cleaning_data#duplicates-and-irrelevant-data)
+		+ [OUTLIERS](cleaning_data#outliers)
+		+ [STRATEGY FOR CLEANING](cleaning_data#strategy-for-cleaning)
 
 		</details>
 	+ [The `analytics` table](cleaning_data.md#b-the-analytics-table)
@@ -53,7 +53,7 @@
 		+ STRATEGY FOR CLEANING
 
 		</details>
-	+ [The `sales_report` table](cleaning_data.md#d-the-sales-report-table)
+	+ [The `sales_report` table](cleaning_data.md#d-the-sales_report-table)
 		<details>
   			<summary>Content</summary>
 
@@ -62,7 +62,7 @@
 		+ STRATEGY FOR CLEANING
 
 		</details>
-	+ [The `sales_by_sku` table](cleaning_data.md#e-the-sales-by-sku-table)
+	+ [The `sales_by_sku` table](cleaning_data.md#e-the-sales_by_sku-table)
 		<details>
   			<summary>Content</summary>
 
@@ -159,6 +159,75 @@ Althought, it's not the best practice because, in real world,  we would need a F
 > **Action**: Create a copy of all_sessions called [clean_all_sessions](cleaning_data.md#clean-all-sessions-table) that includes all previous actions, and common issues, using UPDATE or ALTER command to change the data in the table.
 Then add the constraint to get the triple composite PK.
 ---
+
+### B. The `analytics` table <a name="b-the-analytics-table"></a>
+
+>**Type of data**: Facts table (visitors info with transactions info)
+**Timeframe**: 3 month (or a quarter) from '2017-05-01' to '2017-08-01'
+
+#### FINDINGS
+
+#### MISSING DATA (Total rows = 15134)
+
+#### DUPLICATES AND IRRELEVANT DATA
+
+#### OUTLIERS
+	
+#### STRATEGY FOR CLEANING
+
+---
+
+### C. The `productinfo` table <a name="c-the-productinfo-table"></a>
+
+>**Type of data**: Facts table (visitors info with transactions info)
+**Timeframe**: 3 month (or a quarter) from '2017-05-01' to '2017-08-01'
+
+#### FINDINGS
+
+#### MISSING DATA (Total rows = 15134)
+
+#### DUPLICATES AND IRRELEVANT DATA
+
+#### OUTLIERS
+	
+#### STRATEGY FOR CLEANING
+
+---
+
+### D. The `sales_report` table <a name="d-the-sales_report-table"></a>
+
+>**Type of data**: Facts table (visitors info with transactions info)
+**Timeframe**: 3 month (or a quarter) from '2017-05-01' to '2017-08-01'
+
+#### FINDINGS
+
+#### MISSING DATA (Total rows = 15134)
+
+#### DUPLICATES AND IRRELEVANT DATA
+
+#### OUTLIERS
+	
+#### STRATEGY FOR CLEANING
+
+---
+
+### E. The `sales_by_sku` table <a name="e-the-sales_by_sku-table"></a>
+
+>**Type of data**: Facts table (visitors info with transactions info)
+**Timeframe**: 3 month (or a quarter) from '2017-05-01' to '2017-08-01'
+
+#### FINDINGS
+
+#### MISSING DATA (Total rows = 15134)
+
+#### DUPLICATES AND IRRELEVANT DATA
+
+#### OUTLIERS
+	
+#### STRATEGY FOR CLEANING
+
+---
+
 ## NEW TABLES <a name="new-tables"></a>
 
 ### The `visitor_details` table <a name="the-visitor-details-table"></a>
