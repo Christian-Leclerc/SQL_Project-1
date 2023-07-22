@@ -24,11 +24,11 @@
 		<details>
   			<summary>Content</summary>
 
-		+ [FINDINGS](cleaning_data#findings)
-		+ [MISSING DATA](cleaning_data#missing-data-total-rows--15134)
-		+ [DUPLICATES AND IRRELEVANT DATA](cleaning_data#duplicates-and-irrelevant-data)
-		+ [OUTLIERS](cleaning_data#outliers)
-		+ [STRATEGY FOR CLEANING](cleaning_data#strategy-for-cleaning)
+		+ [FINDINGS](cleaning_data.md#findings)
+		+ [MISSING DATA](cleaning_data.md#missing-data-total-rows--15134)
+		+ [DUPLICATES AND IRRELEVANT DATA](cleaning_data.md#duplicates-and-irrelevant-data)
+		+ [OUTLIERS](cleaning_data.md#outliers)
+		+ [STRATEGY FOR CLEANING](cleaning_data.md#strategy-for-cleaning)
 
 		</details>
 	+ [The `analytics` table](cleaning_data.md#b-the-analytics-table)
@@ -72,7 +72,7 @@
 
 		</details>
 + [NEW TABLES](cleaning_data.md#new-tables)
-	+ [The `visitor_details` TABLE](cleaning_data#the-visitor_details-table)
+	+ [The `visitor_details` TABLE](cleaning_data.md#the-visitor_details-table)
 	+ [The `visitors` TABLE](cleaning_data.md#the-visitors-table)
 + [QUERIES](cleaning_data.md#queries)
 	+ [`clean_all_sessions` TABLE](cleaning_data.md#clean_all_sessions-table)
@@ -268,7 +268,7 @@ Note: Only the `fullvisitor_id` was populated for this project.
 
 ### `clean_all_sessions` TABLE <a name="clean-all-sessions-table"></a>
 
->Refer to Risk Assessment Number (RAN X#) in [QA.md file](qa.md) for explanations and mitigation of each risk.
+>Refer to Risk Assessment Number (RAN X#) in [QA.md file](QA.md) for explanations and mitigation of each risk.
 ```sql
 ---------------- CLEANING DATA ----------------
 ----- Cleaning all_sessions table -----
