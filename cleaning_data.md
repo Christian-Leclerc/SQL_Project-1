@@ -4,7 +4,7 @@
 ---
 ***Notes:***
 - This file is better viewed using [GitHub](https://github.com) preview screen (or any Markdown viewer) to be able to use the relative links.
-- Refer to Risk Assessment Number (RAN X#) in [QA.md file](qa.md) for explanations and mitigation of each risk.
+- Refer to Risk Assessment Number (RAN X#) in [QA.md file](QA.md) for explanations and mitigation of each risk.
 - Almost all column names were imported from raw data .csv files with new names without camelCase to be able to:
     +   differentiate time and date with datatype **TIME** and **DATE**
     +   to remove the usage of double quote ("") in SQL queries (when using **[pgAdmin 4](https://www.pgadmin.org/download/)**)
@@ -20,7 +20,7 @@
 ---
 ## TABLE OF CONTENTS
 + [ASSUMPTION ASSESSMENT PER TABLE](cleaning_data.md#assumptions-assessment-per-table)
-	+ [The all_sessions table](cleaning_data.md#a-the-all_sessions-table)
+	+ [The `all_sessions` table](cleaning_data.md#a-the-all_sessions-table)
 		<details>
   			<summary>Content</summary>
 
@@ -31,7 +31,7 @@
 		+ STRATEGY FOR CLEANING
 
 		</details>
-	+ [The analytics table](cleaning_data.md#b-the-analytics-table)
+	+ [The `analytics` table](cleaning_data.md#b-the-analytics-table)
 		<details>
   			<summary>Content</summary>
 
@@ -42,7 +42,7 @@
 		+ STRATEGY FOR CLEANING
 
 		</details>
-	+ [The productinfo table](cleaning_data.md#c-the-productinfo-table)
+	+ [The `productinfo` table](cleaning_data.md#c-the-productinfo-table)
 		<details>
   			<summary>Content</summary>
 
@@ -53,7 +53,7 @@
 		+ STRATEGY FOR CLEANING
 
 		</details>
-	+ [The sales_report table](cleaning_data.md#d-the-sales-report-table)
+	+ [The `sales_report` table](cleaning_data.md#d-the-sales-report-table)
 		<details>
   			<summary>Content</summary>
 
@@ -62,7 +62,7 @@
 		+ STRATEGY FOR CLEANING
 
 		</details>
-	+ [The sales_by_sku table](cleaning_data.md#e-the-sales-by-sku-table)
+	+ [The `sales_by_sku` table](cleaning_data.md#e-the-sales-by-sku-table)
 		<details>
   			<summary>Content</summary>
 
@@ -72,18 +72,19 @@
 
 		</details>
 + [NEW TABLES](cleaning_data.md#new-tables)
-	+ [The `visitors` table](cleaning_data.md#the-visitors-table)
+	+ [The `visitor_details` TABLE](cleaning_data#the-visitor_details-table)
+	+ [The `visitors` TABLE](cleaning_data.md#the-visitors-table)
 + [QUERIES](cleaning_data.md#queries)
-	+ [clean_all_sessions VIEW](cleaning_data.md#clean_all_sessions-view)
-	+ [clean_analytics VIEW](cleaning_data.md#clean_analytics-view)
-	+ [clean_productinfo VIEW](cleaning_data.md#clean_productinfo-view)
+	+ [`clean_all_sessions` TABLE](cleaning_data.md#clean_all_sessions-table)
+	+ [`clean_analytics` VIEW](cleaning_data.md#clean_analytics-view)
+	+ [`clean_productinfo` VIEW](cleaning_data.md#clean_productinfo-view)
 
 ---
 ## ASSUMPTION ASSESSMENT PER TABLE <a name="assumptions assessment-per-table"></a>
 
 ### A. The `all_sessions` table <a name="a-the-all-sessions-table"></a>
 
->**Type of data**: Dimension (transactional info and some visitor info)
+>**Type of data**: Facts table (transactionals info and some visitors info)
 **Timeframe**: 1 year from '2016-08-01' to '2017-08-01'
 
 #### FINDINGS
@@ -135,7 +136,7 @@ a.	Based on previous assumption, using triple composite PK (`visit_id, fullvisit
 
 b.	Multiple rows have `productprice`= 0. Not usable to calculate revenue.
 
-After analysis, all `sku_id` from `productinfo` table that matched `product_sku` of `all_sessions` table have an `orderedquantity` = 0. But not all product can be found. Meaning, it make sense that products with a `productprice` of 0 where not added to the fact table `productinfo`. Probably cancelled order (or errors).
+After analysis, all `sku_id` from `productinfo` table that matched `product_sku` of `all_sessions` table have an `orderedquantity` = 0. But not all product can be found. Meaning, it make sense that products with a `productprice` of 0 where not added to the dimension table `productinfo`. Probably cancelled order (or errors).
 
 *Bonus assumption:* by looking at the product SKU with `productprice` = 0, it seems it is all the product starting with a number instead of G... numbers (Ex.: 9180766). It really looks like a "back order" problem. People where trying to buy a part that is out-of-stock. So they had to redo a new transaction to buy an alternative.
 	
@@ -165,7 +166,7 @@ Then add the constraint to get the triple composite PK.
 While trying to join `all_sessions` with `analytics` tables it became very obvious that a new table for visitors data was needed as there is a MANY-to-MANY relationship between the two tables: 
 >Multiple visitors can have multiple sessions (in `all_sessions`)
 AND 
-Same visitors session can have multiple product bought (in `analytics`)
+same visitors session can have multiple product bought (in `analytics`)
 
 For that purpose (and for a cleaner [ERD](README.md#erd)), the `visitor_details` table was created with only the data needed for our analysis. Thought, during EDA (Exploratory Data Analysis), we found multiple visitors with different country. Plausible, as a visitor can move from time-to-time. Therefore, my approach was to use a composite Key made of `fullvisitor_id` and `visit_date`. Together, they represent a unique identifier of each visit of each customer. Adding the `country` and `city` in the table, we have all the info needed for the analysis.
 
@@ -184,7 +185,7 @@ Note: Of course, the table is missing data for `city` as the data was not availa
 
 ### The `visitors` table <a name="the-visitors-table"></a>
 
-To complete the "clean" [ERD](README.md#erd) and have a relation between the `clean_all_sessions`, the `visitor_details` and the `analytics` tables,  a new table is needed to represent each visitor with `fullvisitor_id` as the PK. Additional informations of the visitor can then be append to it such as (but not limited):
+To complete the "clean" [ERD](README.md#erd) and have a relation between the `clean_all_sessions`, the `visitor_details` and the `analytics` tables,  a new table is needed to represent each visitor with `fullvisitor_id` as the PK. Additional informations of the visitor can then be append to it such as (but not limited to):
 + Total number of visits
 + Total revenue
 + Total units bought
@@ -214,7 +215,7 @@ CREATE TABLE clean_all_sessions AS
 	-- to find where product_SKU repeats and tag a new column prev_val with the previous value of product_sku (to be deleted)
 	SELECT *
 	FROM ( SELECT *, -- RAN A3 (part 1)
-			LAG(product_sku) OVER (PARTITION BY visit_id, fullvisitor_id, product_sku ORDER BY visit_id) AS prev_val
+		LAG(product_sku) OVER (PARTITION BY visit_id, fullvisitor_id, product_sku ORDER BY visit_id) AS prev_val
 		FROM all_sessions
 		) AS irrelevant_data
 	WHERE
