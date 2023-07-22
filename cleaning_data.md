@@ -82,7 +82,7 @@
 ---
 ## ASSUMPTION ASSESSMENT PER TABLE <a name="assumptions assessment-per-table"></a>
 
-### A. The `all_sessions` table <a name="a-the-all-sessions-table"></a>
+### A. The `all_sessions` table <a name="a-the-all_sessions-table"></a>
 
 >**Type of data**: Facts table (transactionals info and some visitors info)
 **Timeframe**: 1 year from '2016-08-01' to '2017-08-01'
@@ -230,7 +230,7 @@ Then add the constraint to get the triple composite PK.
 
 ## NEW TABLES <a name="new-tables"></a>
 
-### The `visitor_details` table <a name="the-visitor-details-table"></a>
+### The `visitor_details` table <a name="the-visitor_details-table"></a>
 
 While trying to join `all_sessions` with `analytics` tables it became very obvious that a new table for visitors data was needed as there is a MANY-to-MANY relationship between the two tables: 
 >Multiple visitors can have multiple sessions (in `all_sessions`)
@@ -266,7 +266,7 @@ Note: Only the `fullvisitor_id` was populated for this project.
 ---
 ## QUERIES <a name="queries"></a>
 
-### `clean_all_sessions` TABLE <a name="clean-all-sessions-table"></a>
+### `clean_all_sessions` TABLE <a name="clean_all_sessions-table"></a>
 
 >Refer to Risk Assessment Number (RAN X#) in [QA.md file](QA.md) for explanations and mitigation of each risk.
 ```sql
