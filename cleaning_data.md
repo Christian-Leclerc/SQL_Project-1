@@ -126,7 +126,7 @@ Data cannot all be found in `analytics` due to timeframe difference.
 a.	Based on previous assumption, using triple composite PK (`visit_id, fullvisitor_id, product_sku`) we find that only 5 rows are duplicates.
 >		
 >**Action**:	[(QA. RAN A3)](qa.md#qa.-ran-a3)
->+ Remove them to consolidate PK.
+>+ Remove the duplicates to consolidate PK.
 ><br>
 
 b.	Multiple rows have `productprice`= 0. Not usable to calculate revenue.
@@ -222,7 +222,7 @@ Even thought a lot of rows seems duplicates, they are actually a real selection 
 #### STRATEGY FOR CLEANING
 
 Since we can't have any PK, there is no reason to recreate a clean copy of the table like the `all_sessions`. We will only create a clean VIEW of the table. 
-Also, in the same VIEW creation, we will apply any queries necessary to obtain the "missing" informations about the **country, city and category** needed for this analysis.
+Also, in the same VIEW creation, we could apply any queries necessary to obtain the "missing" informations about the **country, city and category** needed for this analysis. To be evaluated.
 
 >**Action:** Create a VIEW called [clean_analytics](cleaning_data.md#clean_analytics-view) which will include all actions and common issues. 
 [(QA.RAN B2)](qa.md#qa.-ran-b2) Add any queries necessary to be able to answer the analysis questions.
