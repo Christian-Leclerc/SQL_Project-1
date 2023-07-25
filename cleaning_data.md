@@ -109,7 +109,7 @@ Althougth we have the `totaltransactionrevenue` that match `analytics = SUM(reve
 
 a.	We can replace some missing values in `city` IF only the info EXISTS for the same visitor (`fullvisitor_id`).
 >			
->**Action**:	[(QA. RAN A1)](qa.md#qa.-ran-a1)
+>**Action**:	[(QA. RAN A1)](qa.md)
 >+ Replace all missing `city` values with existing value for same `fullvisitor_id` IF EXISTS
 ELSE keep it NULL.
 ><br>
@@ -117,7 +117,7 @@ ELSE keep it NULL.
 b.	Stage 1 sessions should have at least a `productquantity` of 1 instead of NULL to be able to calculate a minimal revenue from `productprice`.
 Data cannot all be found in `analytics` due to timeframe difference.
 >			
->**Action**:	[(QA. RAN A2)](qa.md#qa.-ran-a2)
+>**Action**:	[(QA. RAN A2)](qa.md)
 >+ Replace all `productquantity` NULL with 1.
 ><br>
 
@@ -125,7 +125,7 @@ Data cannot all be found in `analytics` due to timeframe difference.
 	
 a.	Based on previous assumption, using triple composite PK (`visit_id, fullvisitor_id, product_sku`) we find that only 5 rows are duplicates.
 >		
->**Action**:	[(QA. RAN A3)](qa.md#qa.-ran-a3)
+>**Action**:	[(QA. RAN A3)](qa.md)
 >+ Remove the duplicates to consolidate PK.
 ><br>
 
@@ -150,7 +150,7 @@ Althought, something went wrong during the extract and we lost the information.
 The need here is only to evaluate WHAT kind of product the visitor are buying for each country/city. The category name itself seems self-explanatory but to decrease the number of categories, instead of doing a full cleaning, we will TRUNCATE the name to only keep the last ***words*** after the last "/" if exists.
 This way, some categories with one word will now match with the truncated categories.
 
->**Action**: [(QA. RAN A4)](qa.md#qa.-ran-a4)
+>**Action**: [(QA. RAN A4)](qa.md)
 >+ TRUNCATE v2productcategory values to only keep the words before the last "/" , if exits, THEN remove all remaining "/".
 >+ Replace "${escCatTitle}" category with "(not set)".
 >+ Bonus action: After previous actions completed, if possible, we could try replacing the v2productcategory "(not set)" with a category name that exist in the v2productname.
@@ -158,7 +158,7 @@ This way, some categories with one word will now match with the truncated catego
 
 *Bonus assumption:* by looking at the product SKU with `productprice` = 0, it seems it is all the product starting with a number instead of G... numbers (Ex.: 9180766). It really looks like a "back order" problem. People where trying to buy a part that is out-of-stock. So they had to redo a new transaction to buy an alternative.
 	
->**Action**: [(QA. RAN A5)](qa.md#qa.-ran-a5)
+>**Action**: [(QA. RAN A5)](qa.md)
 >+ Remove all rows with `productprice` = 0.
 ><br>
 	
@@ -204,7 +204,7 @@ To be able to answer any questions about revenue and quantity of units, we need 
 
 a.	It does not make sense to have 400k units sold in 3 month while the overall `productinfo` table only has 156K products ordered (which should represent the total ordered of product from `all_sessions` table (1 year)). After validation, every row with a `revenue` has a `unitssold`. Therefore:
 >			
->**Action**:	[(QA. RAN B1)](qa.md#qa.-ran-b1)
+>**Action**:	[(QA. RAN B1)](qa.md)
 >+ Remove all rows WITH `unitssold` WITHOUT `revenue`.
 ><br>
 
@@ -225,7 +225,7 @@ Since we can't have any PK, there is no reason to recreate a clean copy of the t
 Also, in the same VIEW creation, we could apply any queries necessary to obtain the "missing" informations about the **country, city and category** needed for this analysis. To be evaluated.
 
 >**Action:** Create a VIEW called [clean_analytics](cleaning_data.md#clean_analytics-view) which will include all actions and common issues. 
-[(QA.RAN B2)](qa.md#qa.-ran-b2) Add any queries necessary to be able to answer the analysis questions.
+[(QA.RAN B2)](qa.md) Add any queries necessary to be able to answer the analysis questions.
 ><br>
 
 ---
