@@ -38,7 +38,7 @@ This is where I try to make sense of the dataset. Using different combination of
 It would be pointless to attached any code related to this portion of the process because of the astronomical quantity of code lines used to make sense of the data (I'm still a student without experience). Also, it's not in the scope of the project.
 
 Therefore, my approach was:
-**To include in the [cleaning_data.md](cleaning_data.md#cleaning-data) file a section where I present all my [assumptions per table](cleaning_data.md#assumption-assessment-per-table) along with all the QA Risk Assessment Number [(QA. RAN X#)](QA.md) that would need to be mitigate at the end of the process [(QAing)](#step-4-qaing).**
+**To include in the [cleaning_data.md](cleaning_data.md#cleaning-data) file a section where I present all my [assumptions per table](cleaning_data.md#assumption-assessment-per-table) along with all the QA Risk Assessment Number [(QA. RAN X#)](qa.md) that would need to be mitigate at the end of the process [(QAing)](#step-4-qaing).**
 
 <p align="center">
 <img src="images/EDA-TOC.png" alt="EDA-TOC" width="400" >
