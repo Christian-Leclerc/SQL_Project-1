@@ -40,7 +40,7 @@ It would be pointless to attached any code related to this portion of the proces
 Therefore, my approach was:
 **To include in the [cleaning_data.md](cleaning_data.md#cleaning-data) file a section where I present all my [assumptions per table](cleaning_data.md#assumption-assessment-per-table) along with all the QA Risk Assessment Number [(QA. RAN X#)](qa.md) that would need to be mitigate at the end of the process [(QAing)](#step-4-qaing).**
 
-![EDA-TOC](iamges/EDA-TOC.png)
+![EDA-TOC](images/eda-toc.png)
 
 ### Step 2: Cleaning and transforming
 >Please consult the [cleaning_data.md](cleaning_data.md) file for a comprehensive overview of my cleaning process and assumption descriptions. 
@@ -54,7 +54,7 @@ Therefore, my approach was:
 
 After cleaning, here is the result of the ERD:
 
-![ERD](images/Schema.png) <a name="erd"></a>
+![ERD](images/schema.png) <a name="erd"></a>
 
 ### Step 3: Analysing
 
