@@ -11,7 +11,7 @@ The project aimed to demonstrate my comprehension and skills related to the cont
 My goal, as a student, is to identify my strengths and weaknesses during the project along with increasing my knowledge of the coding and the tools available.
 
 ## Table of Contents
-- [Project Background](#project-background-and-ressource)
+- [Project Background](#project-background-and-ressources)
 - [Process](#process)
 - [Results](#results)
 - [Challenges](#challenges)
